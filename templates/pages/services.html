@@ -32,101 +32,23 @@
             </p>
         </div>
         <div class="row pt-45">
+            {% for service in services %}
             <div class="col-lg-4 col-sm-6">
                 <div class="service-card">
-                    <a href="{% url "service_details" %}">
-                        <img src="{% static "assets/img/service-icon/1.png" %}" alt="Images">
+                    <a href="{% url "service_details" service.pk %}">
+                        {% if service.image %}
+                        <img src="{{ service.image.url}}" alt="Images">
+                        {% endif %}
                     </a>
-                    <a href="{% url "service_details" %}">
-                        <h3>SEO Optimization</h3>
+                    <a href="{% url "service_details" service.pk%}">
+                        <h3>{{service.title}}</h3>
                     </a>
                     <p>
-                        It is a long established fact that area
-                        der will be distracted by the reada
-                        ble content of a page when looking.
+                        {{service.body}}
                     </p>
                 </div>
             </div>
-
-            <div class="col-lg-4 col-sm-6">
-                <div class="service-card">
-                    <a href="{% url "service_details" %}">
-                        <img src="{% static "assets/img/service-icon/2.png" %}" alt="Images">
-                    </a>
-                    <a href="{% url "service_details" %}">
-                        <h3>Social Marketing</h3>
-                    </a>
-                    <p>
-                        It is a long established fact that area
-                        der will be distracted by the reada
-                        ble content of a page when looking.
-                    </p>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-sm-6">
-                <div class="service-card">
-                    <a href="{% url "service_details" %}">
-                        <img src="{% static "assets/img/service-icon/3.png" %}" alt="Images">
-                    </a>
-                    <a href="{% url "service_details" %}">
-                        <h3>Content Marketing</h3>
-                    </a>
-                    <p>
-                        It is a long established fact that area
-                        der will be distracted by the reada
-                        ble content of a page when looking.
-                    </p>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-sm-6">
-                <div class="service-card">
-                    <a href="{% url "service_details" %}">
-                        <img src="{% static "assets/img/service-icon/4.png" %}" alt="Images">
-                    </a>
-                    <a href="{% url "service_details" %}">
-                        <h3>Analytical Analysis</h3>
-                    </a>
-                    <p>
-                        It is a long established fact that area
-                        der will be distracted by the reada
-                        ble content of a page when looking.
-                    </p>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-sm-6">
-                <div class="service-card">
-                    <a href="{% url "service_details" %}">
-                        <img src="{% static "assets/img/service-icon/5.png" %}" alt="Images">
-                    </a>
-                    <a href="{% url "service_details" %}">
-                        <h3>App Development</h3>
-                    </a>
-                    <p>
-                        It is a long established fact that area
-                        der will be distracted by the reada
-                        ble content of a page when looking.
-                    </p>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-sm-6">
-                <div class="service-card">
-                    <a href="{% url "service_details" %}">
-                        <img src="{% static "assets/img/service-icon/6.png" %}" alt="Images">
-                    </a>
-                    <a href="{% url "service_details" %}">
-                        <h3>Web Development</h3>
-                    </a>
-                    <p>
-                        It is a long established fact that area
-                        der will be distracted by the reada
-                        ble content of a page when looking.
-                    </p>
-                </div>
-            </div>
+            {% endfor %}
 
             <div class="col-lg-12">
                 <div class="pagination-area">

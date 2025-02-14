@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import *
 
 def home(request):
     return render(request=request, template_name='pages/home.html')
@@ -21,12 +22,6 @@ def contact(request):
 def faq(request):
     return render(request=request, template_name='pages/faq.html')
 
-# def index3(request):
-#     return render(request=request, template_name='pages/index-three.html')
-
-# def index2(request):
-#     return render(request=request, template_name='pages/index-two.html')
-
 def members(request):
     return render(request=request, template_name='pages/members.html')
 
@@ -42,11 +37,19 @@ def privacy(request):
 def recover(request):
     return render(request=request, template_name='pages/recover-password.html')
 
-def service_details(request):
-    return render(request=request, template_name='pages/service-details.html')
+def service_details(request, pk):
+    services = Services.objects.get(pk=pk)
+    context = {
+        'services' : services
+    }
+    return render(request=request, template_name='pages/service-details.html', context = context)
 
 def service(request):
-    return render(request=request, template_name='pages/services.html')
+    services = Services.objects.all()
+    context = {
+        'services' : services
+    }
+    return render(request=request, template_name='pages/services.html', context = context)
 
 def sign_in(request):
     return render(request=request, template_name='pages/sign-in.html')
